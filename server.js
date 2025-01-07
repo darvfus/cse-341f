@@ -1,13 +1,12 @@
 const express = require('express');
 const app = express();
- 
-app.get('/', (req, res) => {
-    
-  res.send("Emily birch");
-});
- 
-const port = 3000;
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Web Server is listening at port ' + (process.env.PORT || 3000));
+const lesson1Controller = require('./controllers/lesson1');
 
+// Define separate routes for emilyRoute and hannahRoute
+app.get('/emily', lesson1Controller.emilyRoute);
+app.get('/hannah', lesson1Controller.hannahRoute);
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log('Web Server is listening at port ' + port);
 });
